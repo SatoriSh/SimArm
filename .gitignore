@@ -1,0 +1,4 @@
+builds/
+*.o
+main
+.vscode/
