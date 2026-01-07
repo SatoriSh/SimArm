@@ -16,6 +16,7 @@ void showBootSplash();
 void sleep(int);
 
 std::vector<std::shared_ptr<Monkey>> monkeys;
+Map map(monkeys);
 
 int main()
 {
@@ -28,9 +29,7 @@ int main()
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 51, 2));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 52, 2));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 53, 2));
-
-    Map map(monkeys);
-
+   
     while (true)
     {
         moveCursorHome();
@@ -48,7 +47,7 @@ void moveMonkeys()
 {
     for (auto monkey : monkeys)
     {
-        monkey->setPosition(monkey->getX() + 1, monkey->getY() + 1);
+        monkey->move(map); // как здесь передать map
     }
 }
 

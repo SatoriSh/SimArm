@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-
+class Map; 
 
 class Entity
 {
@@ -9,9 +9,8 @@ public:
     Entity(int health, int damage, std::string view, int x, int y);
     virtual ~Entity();
 
-    virtual void move();
+    void move(const Map& map);
     void setPosition(int x, int y);
-
 
     int getHealth() const { return this->health; };
     int getDamage() const { return this->damage; };

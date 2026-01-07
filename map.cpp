@@ -3,6 +3,7 @@
 #include "entities/monkey.h"
 
 
+
 Map::Map(const std::vector<std::shared_ptr<Monkey>>& monkeys)
     : monkeysRef(monkeys)
 {
@@ -43,14 +44,12 @@ std::string Map::getObjectOnCell(int x, int y)
     return "empty";
 }
 
-bool Map::canMove(int direction) const
+bool Map::canMove(int x, int y) const
 {
-    if (direction == 1) // up
-    {
-        
-    }
+    return true;
 }
+
 Map::~Map()
 {
-
+    
 }

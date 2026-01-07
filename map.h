@@ -16,7 +16,7 @@ public:
     void render() const;
 
     std::string getObjectOnCell(int x, int y);
-    bool canMove(int direction) const; // по сути карте лучше знать
+    bool canMove(int x, int y) const; // по сути карте лучше знать
 
 private:
     const int HEIGHT = 30;
