@@ -28,11 +28,6 @@ int main()
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 51, 2));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 52, 2));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 53, 2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 54, 2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 55, 2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 56, 2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 57, 2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 58, 2));
 
     Map map(monkeys);
 
@@ -64,11 +59,10 @@ void showBootSplash()
     std::cout << R"(\___ \| | '_ ` _ \  / _ \ | '__| '_ ` _ \)" << std::endl;
     std::cout << R"( ___) | | | | | | |/ ___ \| |  | | | | | |)" << std::endl;
     std::cout << R"(|____/|_|_| |_| |_/_/   \_|_|  |_| |_| |_|)" << std::endl;
-    
+
     std::cout << std::endl << std::endl << std::endl;
 
     sleep(bootSplashTime);
 }
 
 void sleep(int time) { std::this_thread::sleep_for(std::chrono::milliseconds(time)); };
-

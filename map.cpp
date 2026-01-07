@@ -31,6 +31,18 @@ std::string Map::getEntity(int x, int y) const
     return grass;
 }
 
+std::string Map::getObjectOnCell(int x, int y) const
+{
+    if (x < 0 || x > WIDTH || y < 0 || y > HEIGHT) return "null";
+
+    for (auto monkey : monkeysRef)
+    {
+        if (monkey->getX() == x && monkey->getY() == y) return "monkey";
+    }
+
+    return "empty";
+}
+
 Map::~Map()
 {
 

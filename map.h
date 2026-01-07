@@ -13,6 +13,7 @@ public:
 
     ~Map();
     void render() const;
+    std::string getObjectOnCell(int x, int y) const;
 private:
     const int HEIGHT = 30;
     const int WIDTH = 90;
