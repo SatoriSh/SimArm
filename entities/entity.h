@@ -10,7 +10,6 @@ public:
     virtual ~Entity();
 
     virtual void move();
-    virtual bool checkCollisions() const;
     void setPosition(int x, int y);
 
 

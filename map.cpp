@@ -15,13 +15,13 @@ void Map::render() const
     {
         for (int x = 0; x < WIDTH; x++)
         {
-            std::cout << "" << getEntity(x, y);
+            std::cout << "" << getObjectView(x, y);
         }
         std::cout << std::endl;
     }
 }
 
-std::string Map::getEntity(int x, int y) const
+std::string Map::getObjectView(int x, int y) const
 {
     for (auto monkey : monkeysRef)
     {
@@ -31,7 +31,7 @@ std::string Map::getEntity(int x, int y) const
     return grass;
 }
 
-std::string Map::getObjectOnCell(int x, int y) const
+std::string Map::getObjectOnCell(int x, int y)
 {
     if (x < 0 || x > WIDTH || y < 0 || y > HEIGHT) return "null";
 
@@ -43,8 +43,14 @@ std::string Map::getObjectOnCell(int x, int y) const
     return "empty";
 }
 
+bool Map::canMove(int direction) const
+{
+    if (direction == 1) // up
+    {
+        
+    }
+}
 Map::~Map()
 {
 
 }
-

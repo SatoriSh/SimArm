@@ -6,6 +6,7 @@
 #include "entities/monkey.h"
 
 
+
 class Map
 {
 public:
@@ -13,13 +14,17 @@ public:
 
     ~Map();
     void render() const;
-    std::string getObjectOnCell(int x, int y) const;
+
+    std::string getObjectOnCell(int x, int y);
+    bool canMove(int direction) const; // по сути карте лучше знать
+
 private:
     const int HEIGHT = 30;
     const int WIDTH = 90;
     std::string grass = "``";
     const std::vector<std::shared_ptr<Monkey>>& monkeysRef; // ссылка на вектор monkeys
-    std::string getEntity(int x, int y) const;
+    std::string getObjectView(int x, int y) const;
+
 
     const std::string GREEN = "\033[32m";
     const std::string RESET = "\033[0m";

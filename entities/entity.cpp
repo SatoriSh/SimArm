@@ -7,14 +7,9 @@ Entity::Entity(int h, int d, std::string v, int x, int y)
 {
 };
 
-bool Entity::checkCollisions() const
-{
-    
-}
-
 void Entity::move()
 {
-    
+
 }
 
 void Entity::setPosition(int x, int y)
@@ -24,3 +19,4 @@ void Entity::setPosition(int x, int y)
 }
 
 Entity::~Entity() {};
+
