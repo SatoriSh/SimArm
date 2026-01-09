@@ -21,7 +21,7 @@ public:
 private:
     const int HEIGHT = 30;
     const int WIDTH = 90;
-    std::string grass = "``";
+    std::string grass = "~^";
     const std::vector<std::shared_ptr<Monkey>>& monkeysRef; // ссылка на вектор monkeys
     std::string getObjectView(int x, int y) const;
 
