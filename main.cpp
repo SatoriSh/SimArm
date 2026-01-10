@@ -36,7 +36,6 @@ int main()
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 9, 29));
 
 
-
     while (true)
     {
         Utils::moveCursorHome();

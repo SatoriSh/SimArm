@@ -1,6 +1,5 @@
 #include <iostream>
 #include "map.h"
-#include "entities/monkey.h"
 #include "utils/utils.h"
 
 

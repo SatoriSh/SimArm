@@ -31,5 +31,3 @@ void Entity::setPosition(int x, int y)
 }
 
 Entity::~Entity() {};
-
-
