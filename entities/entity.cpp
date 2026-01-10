@@ -3,8 +3,6 @@
 #include "../map.h"
 #include "../utils/utils.h"
 
-Utils utils;
-
 Entity::Entity(int h, int d, std::string v, int x, int y)
     : health(h), damage(d), view(v), x(x), y(y) // ну и синтаксис блять
 {
@@ -12,7 +10,7 @@ Entity::Entity(int h, int d, std::string v, int x, int y)
 
 void Entity::move(const Map& map)
 {
-    int direction = utils.getRandomInt(1, 4); // 1 - up, 2 - right, 3 - down, 4 - left
+    int direction = Utils::getRandomInt(1, 4); // 1 - up, 2 - right, 3 - down, 4 - left
 
     if (direction == 1 && map.canMove(x, y + 1))
         setPosition(x, y + 1);

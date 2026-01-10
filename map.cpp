@@ -1,17 +1,17 @@
 #include <iostream>
 #include "map.h"
 #include "entities/monkey.h"
-
+#include "utils/utils.h"
 
 
 Map::Map(const std::vector<std::shared_ptr<Monkey>>& monkeys)
     : monkeysRef(monkeys)
 {
-    std::cout << GREEN;
 }
 
 void Map::render() const
 {
+    std::cout << Utils::GREEN;
     for (int y = 0; y < HEIGHT; y++)
     {
         for (int x = 0; x < WIDTH; x++)
@@ -20,6 +20,7 @@ void Map::render() const
         }
         std::cout << std::endl;
     }
+    std::cout << Utils::RESET;
 }
 
 std::string Map::getObjectView(int x, int y) const

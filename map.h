@@ -25,7 +25,4 @@ private:
     const std::vector<std::shared_ptr<Monkey>>& monkeysRef; // ссылка на вектор monkeys
     std::string getObjectView(int x, int y) const;
 
-
-    const std::string GREEN = "\033[32m";
-    const std::string RESET = "\033[0m";
 };

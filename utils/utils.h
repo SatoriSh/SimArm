@@ -5,6 +5,14 @@
 class Utils
 {
 public:
-    int getRandomInt(int min, int max) const;
+    static int getRandomInt(int min, int max);
 
+    // colors
+    static const std::string RED;
+    static const std::string GREEN;
+    static const std::string YELLOW;
+    static const std::string BLUE;
+    static const std::string MAGENTA;
+    static const std::string CYAN;
+    static const std::string RESET;
 };

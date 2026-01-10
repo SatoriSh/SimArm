@@ -3,11 +3,14 @@ CXX = g++
 CXXFLAGS = -Wall -std=c++17
 TARGET = main
 BUILD_DIR = builds
+DEPFLAGS = -MMD -MP
 
 # Поиск всех .cpp файлов во всех подпапках
 SRCS = $(shell find . -name "*.cpp")
 # Превращаем пути .cpp в пути к объектным файлам .o в папке builds
 OBJS = $(patsubst %.cpp, $(BUILD_DIR)/%.o, $(SRCS))
+
+DEPS = $(OBJS:.o=.d)
 
 # Правило по умолчанию (просто сборка)
 all: $(BUILD_DIR)/$(TARGET)
@@ -20,7 +23,7 @@ $(BUILD_DIR)/$(TARGET): $(OBJS)
 # Компиляция (Compiling) - создает .o файлы из .cpp
 $(BUILD_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(DEPFLAGS) -c $< -o $@
 
 # Команда для запуска (без принудительной пересборки)
 run:
@@ -36,3 +39,6 @@ br: all run
 # Очистка папки сборки
 clean:
 	rm -rf $(BUILD_DIR)
+
+
+-include $(DEPS)

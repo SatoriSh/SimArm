@@ -4,15 +4,17 @@
 #include <chrono>
 #include "map.h"
 #include "entities/monkey.h"
+#include "utils/utils.h"
 
 const void moveCursorHome() { std::cout << "\033[H"; }
 const void hideCursor() { std::cout << "\033[?25l"; }
 
 int updateTime = 1000;
 const int bootSplashTime = 2000;
+const int logoAnimationUpdateTime = 100;
 
-void moveMonkeys();
 void showBootSplash();
+void moveMonkeys();
 void sleep(int);
 
 std::vector<std::shared_ptr<Monkey>> monkeys;
@@ -29,7 +31,7 @@ int main()
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 51, 2));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 52, 2));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 53, 2));
-   
+
     while (true)
     {
         moveCursorHome();
@@ -42,7 +44,6 @@ int main()
     return 0;
 }
 
-
 void moveMonkeys()
 {
     for (auto monkey : monkeys)
@@ -53,11 +54,17 @@ void moveMonkeys()
 
 void showBootSplash()
 {
-    std::cout << R"( ____  _              _)" << std::endl;
-    std::cout << R"(/ ___|(_)_ __ ___    / \   _ __ _ __ ___)" << std::endl;
-    std::cout << R"(\___ \| | '_ ` _ \  / _ \ | '__| '_ ` _ \)" << std::endl;
-    std::cout << R"( ___) | | | | | | |/ ___ \| |  | | | | | |)" << std::endl;
-    std::cout << R"(|____/|_|_| |_| |_/_/   \_|_|  |_| |_| |_|)" << std::endl;
+    std::cout << Utils::GREEN << "\n\n\n";
+
+    std::cout << "\t\t" << R"( ____  _              _)" << std::endl;
+    sleep(logoAnimationUpdateTime);
+    std::cout << "\t\t" << R"(/ ___|(_)_ __ ___    / \   _ __ _ __ ___)" << std::endl;
+    sleep(logoAnimationUpdateTime);
+    std::cout << "\t\t" << R"(\___ \| | '_ ` _ \  / _ \ | '__| '_ ` _ \)" << std::endl;
+    sleep(logoAnimationUpdateTime);
+    std::cout << "\t\t" << R"( ___) | | | | | | |/ ___ \| |  | | | | | |)" << std::endl;
+    sleep(logoAnimationUpdateTime);
+    std::cout << "\t\t" << R"(|____/|_|_| |_| |_/_/   \_|_|  |_| |_| |_|)" << std::endl;
 
     std::cout << std::endl << std::endl << std::endl;
 
