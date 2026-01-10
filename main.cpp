@@ -6,7 +6,7 @@
 #include "entities/monkey.h"
 #include "entities/naturalObjects.h"
 
-int updateTime = 5000;
+int updateTime = 100;
 const int bootSplashTime = 10;
 const int logoAnimationUpdateTime = 10;
 
@@ -14,9 +14,9 @@ void showBootSplash();
 void moveMonkeys();
 void sleep(int);
 
+// я не ебу что лучше, кинуть всё в один вектор или вот так и похуй
 std::vector<std::shared_ptr<Monkey>> monkeys;
 std::vector<std::shared_ptr<Mountain>> mountains;
-
 
 
 Map map(monkeys, mountains);
