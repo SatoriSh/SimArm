@@ -8,6 +8,7 @@ public:
     static int getRandomInt(int min, int max);
     static void moveCursorHome();
     static void hideCursor();
+    static void clearConsole();
 
     // colors
     static const std::string RED;

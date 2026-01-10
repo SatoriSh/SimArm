@@ -68,6 +68,8 @@ void moveMonkeys()
 
 void showBootSplash()
 {
+    Utils::clearConsole();
+
     std::cout << Utils::GREEN;
 
     std::cout << R"( ____  _              _)" << std::endl;
