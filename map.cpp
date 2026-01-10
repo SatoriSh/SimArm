@@ -33,7 +33,7 @@ std::string Map::getObjectView(int x, int y) const
     return grass;
 }
 
-std::string Map::getObjectOnCell(int x, int y)
+std::string Map::getObjectOnCell(int x, int y) const
 {
     if (x < 0 || x > WIDTH || y < 0 || y > HEIGHT) return "null";
 
@@ -48,6 +48,9 @@ std::string Map::getObjectOnCell(int x, int y)
 bool Map::canMove(int x, int y) const
 {
     if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+        return false;
+
+    if (getObjectOnCell(x, y) != "empty")
         return false;
 
     return true;

@@ -6,9 +6,9 @@
 #include "entities/monkey.h"
 #include "utils/utils.h"
 
-int updateTime = 500;
-const int bootSplashTime = 2000;
-const int logoAnimationUpdateTime = 100;
+int updateTime = 200;
+const int bootSplashTime = 10;
+const int logoAnimationUpdateTime = 10;
 
 void showBootSplash();
 void moveMonkeys();
@@ -35,7 +35,8 @@ int main()
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 8, 29));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 9, 29));
 
-    
+
+
     while (true)
     {
         Utils::moveCursorHome();

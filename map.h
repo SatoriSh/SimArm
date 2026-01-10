@@ -15,7 +15,7 @@ public:
     ~Map();
     void render() const;
 
-    std::string getObjectOnCell(int x, int y);
+    std::string getObjectOnCell(int x, int y) const;
     bool canMove(int x, int y) const; // по сути карте лучше знать
 
 private:
