@@ -20,3 +20,5 @@ int Utils::getRandomInt(int min, int max)
 
 
 
+void Utils::moveCursorHome() { std::cout << "\033[H"; };
+void Utils::hideCursor() { std::cout << "\033[?25l"; };

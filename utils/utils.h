@@ -6,6 +6,8 @@ class Utils
 {
 public:
     static int getRandomInt(int min, int max);
+    static void moveCursorHome();
+    static void hideCursor();
 
     // colors
     static const std::string RED;

@@ -47,10 +47,13 @@ std::string Map::getObjectOnCell(int x, int y)
 
 bool Map::canMove(int x, int y) const
 {
+    if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+        return false;
+
     return true;
 }
 
 Map::~Map()
 {
-    
+
 }

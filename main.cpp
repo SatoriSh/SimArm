@@ -6,10 +6,7 @@
 #include "entities/monkey.h"
 #include "utils/utils.h"
 
-const void moveCursorHome() { std::cout << "\033[H"; }
-const void hideCursor() { std::cout << "\033[?25l"; }
-
-int updateTime = 1000;
+int updateTime = 500;
 const int bootSplashTime = 2000;
 const int logoAnimationUpdateTime = 100;
 
@@ -23,18 +20,25 @@ Map map(monkeys);
 int main()
 {
     std::cout << std::endl;
-    hideCursor();
+    Utils::hideCursor();
 
     showBootSplash();
 
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 50, 2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 51, 2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 52, 2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 53, 2));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 0, 0));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 89, 5));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 89, 6));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 89, 7));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 5, 29));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 5, 29));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 6, 29));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 7, 29));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 8, 29));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 9, 29));
 
+    
     while (true)
     {
-        moveCursorHome();
+        Utils::moveCursorHome();
         map.render();
 
         moveMonkeys();
@@ -54,17 +58,17 @@ void moveMonkeys()
 
 void showBootSplash()
 {
-    std::cout << Utils::GREEN << "\n\n\n";
+    std::cout << Utils::GREEN;
 
-    std::cout << "\t\t" << R"( ____  _              _)" << std::endl;
+    std::cout << R"( ____  _              _)" << std::endl;
     sleep(logoAnimationUpdateTime);
-    std::cout << "\t\t" << R"(/ ___|(_)_ __ ___    / \   _ __ _ __ ___)" << std::endl;
+    std::cout << R"(/ ___|(_)_ __ ___    / \   _ __ _ __ ___)" << std::endl;
     sleep(logoAnimationUpdateTime);
-    std::cout << "\t\t" << R"(\___ \| | '_ ` _ \  / _ \ | '__| '_ ` _ \)" << std::endl;
+    std::cout << R"(\___ \| | '_ ` _ \  / _ \ | '__| '_ ` _ \)" << std::endl;
     sleep(logoAnimationUpdateTime);
-    std::cout << "\t\t" << R"( ___) | | | | | | |/ ___ \| |  | | | | | |)" << std::endl;
+    std::cout << R"( ___) | | | | | | |/ ___ \| |  | | | | | |)" << std::endl;
     sleep(logoAnimationUpdateTime);
-    std::cout << "\t\t" << R"(|____/|_|_| |_| |_/_/   \_|_|  |_| |_| |_|)" << std::endl;
+    std::cout << R"(|____/|_|_| |_| |_/_/   \_|_|  |_| |_| |_|)" << std::endl;
 
     std::cout << std::endl << std::endl << std::endl;
 
