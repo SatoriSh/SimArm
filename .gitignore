@@ -2,3 +2,4 @@ builds/
 *.o
 main
 .vscode/
+Makefile
