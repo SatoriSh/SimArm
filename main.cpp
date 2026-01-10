@@ -52,7 +52,7 @@ void moveMonkeys()
 {
     for (auto monkey : monkeys)
     {
-        monkey->move(map); // как здесь передать map
+        monkey->move(map);
     }
 }
 
