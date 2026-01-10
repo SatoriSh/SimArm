@@ -3,8 +3,8 @@
 
 
 
-Map::Map(const std::vector<std::shared_ptr<Monkey>>& monkeys, const std::vector<std::shared_ptr<Mountain>>& mountains)
-    : monkeysRef(monkeys), mountainsRef(mountains)
+Map::Map(const std::vector<std::shared_ptr<Monkey>>& monkeys, const std::vector<std::shared_ptr<NaturalObjects>>& naturalObjects)
+    : monkeysRef(monkeys), naturalObjectsRef(naturalObjects)
 {
 }
 
@@ -28,9 +28,9 @@ std::string Map::getObjectView(int x, int y) const
     {
         if (monkey->getX() == x && monkey->getY() == y) return monkey->getView();
     }
-    for (const std::shared_ptr<Mountain>& mountain : mountainsRef)
+    for (const std::shared_ptr<NaturalObjects>& naturalObject : naturalObjectsRef)
     {
-        if (mountain->getX() == x && mountain->getY() == y) return mountain->getView();
+        if (naturalObject->getX() == x && naturalObject->getY() == y) return naturalObject->getView();
     }
 
     return grass;
@@ -43,9 +43,9 @@ std::shared_ptr<void> Map::getObjectOnCell(int x, int y) const
     {
         if (monkey->getX() == x && monkey->getY() == y) return monkey;
     }
-    for (const std::shared_ptr<Mountain>& mountain : mountainsRef)
+    for (const std::shared_ptr<NaturalObjects>& naturalObject : naturalObjectsRef)
     {
-        if (mountain->getX() == x && mountain->getY() == y) return mountain;
+        if (naturalObject->getX() == x && naturalObject->getY() == y) return naturalObject;
     }
 
     return nullptr;

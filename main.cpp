@@ -3,23 +3,25 @@
 #include <chrono>
 #include "utils/utils.h"
 #include "map.h"
-#include "entities/monkey.h"
+#include "entities/entity.h"
 #include "entities/naturalObjects.h"
+#include "entities/mountain.h"
+#include "entities/tree.h"
 
 int updateTime = 100;
-const int bootSplashTime = 10;
+const int bootSplashTime = 1000;
 const int logoAnimationUpdateTime = 10;
 
 void showBootSplash();
+void showInfo();
 void moveMonkeys();
 void sleep(int);
 
 // я не ебу что лучше, кинуть всё в один вектор или вот так и похуй
 std::vector<std::shared_ptr<Monkey>> monkeys;
-std::vector<std::shared_ptr<Mountain>> mountains;
+std::vector<std::shared_ptr<NaturalObjects>> naturalObjects;
 
-
-Map map(monkeys, mountains);
+Map map(monkeys, naturalObjects);
 
 int main()
 {
@@ -40,15 +42,20 @@ int main()
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 9, 29));
 
 
-    mountains.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 1, 1));
-    mountains.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 2, 2));
-    mountains.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 3, 3));
-    mountains.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 4, 4));
+    naturalObjects.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 1, 1));
+    naturalObjects.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 2, 2));
+    naturalObjects.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 3, 3));
+    naturalObjects.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 4, 4));
+    naturalObjects.push_back(std::make_shared<Tree>(40, 15, "🌳", 5, 5));
+    naturalObjects.push_back(std::make_shared<Tree>(40, 15, "🌳", 6, 6));
+    naturalObjects.push_back(std::make_shared<Tree>(40, 15, "🌳", 7, 7));
+    naturalObjects.push_back(std::make_shared<Tree>(40, 15, "🌳", 8, 8));
 
 
     while (true)
     {
         Utils::moveCursorHome();
+        showInfo();
         map.render();
 
         moveMonkeys();
@@ -68,8 +75,6 @@ void moveMonkeys()
 
 void showBootSplash()
 {
-    Utils::clearConsole();
-
     std::cout << Utils::GREEN;
 
     std::cout << R"( ____  _              _)" << std::endl;
@@ -81,10 +86,19 @@ void showBootSplash()
     std::cout << R"( ___) | | | | | | |/ ___ \| |  | | | | | |)" << std::endl;
     sleep(logoAnimationUpdateTime);
     std::cout << R"(|____/|_|_| |_| |_/_/   \_|_|  |_| |_| |_|)" << std::endl;
-
     std::cout << std::endl << std::endl << std::endl;
 
     sleep(bootSplashTime);
+    Utils::clearConsole();
+}
+
+void showInfo()
+{
+    std::cout << Utils::CYAN;
+    std::cout << "Wood: 1213\n";
+    std::cout << "Rock: 531\n";
+    std::cout << "Monkey: 37\n\n";
+    std::cout << Utils::RESET;
 }
 
 void sleep(int time) { std::this_thread::sleep_for(std::chrono::milliseconds(time)); };

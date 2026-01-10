@@ -6,8 +6,8 @@ class NaturalObjects
 public:
     enum ResourceType
     {
-        wood,
-        rock
+        Wood,
+        Rock
     };
 
     NaturalObjects(ResourceType resourceType, int health, int resourceAmount, std::string view, int x, int y);

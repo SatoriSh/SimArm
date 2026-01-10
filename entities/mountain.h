@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "naturalObjects.h"
 
 class Mountain : public NaturalObjects

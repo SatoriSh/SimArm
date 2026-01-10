@@ -8,6 +8,4 @@ NaturalObjects::NaturalObjects(ResourceType rt, int h, int ra, std::string v, in
     
 }
 
-
-
 NaturalObjects::~NaturalObjects() {};
