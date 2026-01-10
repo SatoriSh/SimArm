@@ -1,12 +1,12 @@
-#include <iostream>
 #include <vector>
 #include <thread>
 #include <chrono>
+#include "utils/utils.h"
 #include "map.h"
 #include "entities/monkey.h"
-#include "utils/utils.h"
+#include "entities/naturalObjects.h"
 
-int updateTime = 200;
+int updateTime = 5000;
 const int bootSplashTime = 10;
 const int logoAnimationUpdateTime = 10;
 
@@ -15,7 +15,11 @@ void moveMonkeys();
 void sleep(int);
 
 std::vector<std::shared_ptr<Monkey>> monkeys;
-Map map(monkeys);
+std::vector<std::shared_ptr<Mountain>> mountains;
+
+
+
+Map map(monkeys, mountains);
 
 int main()
 {
@@ -24,8 +28,8 @@ int main()
 
     showBootSplash();
 
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 0, 0));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 89, 5));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 2, 1));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 3, 2));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 89, 6));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 89, 7));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 5, 29));
@@ -34,6 +38,12 @@ int main()
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 7, 29));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 8, 29));
     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 9, 29));
+
+
+    mountains.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 1, 1));
+    mountains.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 2, 2));
+    mountains.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 3, 3));
+    mountains.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 4, 4));
 
 
     while (true)

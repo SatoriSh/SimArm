@@ -1,9 +1,9 @@
 #pragma once
 #include "naturalObjects.h"
 
-class mountain : public naturalObjects
+class Mountain : public NaturalObjects
 {
 public:
-    mountain(int health, int resourceAmount, std::string view);
-    ~mountain();
+    Mountain(int health, int resourceAmount, std::string view, int x, int y);
+    ~Mountain();
 };

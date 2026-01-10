@@ -2,12 +2,12 @@
 #include "naturalObjects.h"
 
 
-naturalObjects::naturalObjects(ResourceType rt,int h, int ra, std::string v)
-    : resourceType(rt), health(h), resourceAmount(ra), view(v)
+NaturalObjects::NaturalObjects(ResourceType rt, int h, int ra, std::string v, int x, int y)
+    : resourceType(rt), health(h), resourceAmount(ra), view(v), x(x), y(y)
 {
     
 }
 
 
 
-naturalObjects::~naturalObjects() {};
+NaturalObjects::~NaturalObjects() {};

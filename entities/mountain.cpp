@@ -2,10 +2,10 @@
 #include "mountain.h"
 
 
-mountain::mountain(int health, int resourceAmount, std::string view)
-    : naturalObjects(ResourceType::rock,health, resourceAmount, view)
+Mountain::Mountain(int health, int resourceAmount, std::string view, int x, int y)
+    : NaturalObjects(ResourceType::rock, health, resourceAmount, view, x, y)
 {
 }
 
 
-mountain::~mountain() {}
+Mountain::~Mountain() {}

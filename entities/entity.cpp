@@ -1,4 +1,3 @@
-#include <iostream>
 #include "entity.h"
 #include "../map.h"
 #include "../utils/utils.h"
