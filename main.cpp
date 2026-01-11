@@ -11,27 +11,22 @@
 #include "entities/naturalObjects.h"
 #include "entities/mountain.h"
 #include "entities/tree.h"
+#include "worldManager/world.h"
 
-int updateTime = 100;
+
 const int bootSplashTime = 1000;
-const int logoAnimationUpdateTime = 10;
+const int logoAnimationUpdateTime = 50;
 
 void showBootSplash();
-void showInfo();
-void moveMonkeys();
 void sleep(int);
 
-std::vector<std::shared_ptr<Monkey>> monkeys;
-std::vector<std::shared_ptr<NaturalObjects>> naturalObjects;
-
-Map map(monkeys, naturalObjects);
+World world;
 
 int main()
 {
     #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
     #endif
-
 
     std::cout << std::endl;
     Utils::hideCursor();
@@ -41,22 +36,13 @@ int main()
     while (true)
     {
         Utils::moveCursorHome();
-        showInfo();
-        map.render();
 
-        moveMonkeys();
-        sleep(updateTime);
+        world.updateTick();
+
+        sleep(world.getUpdateTime());
     }
 
     return 0;
-}
-
-void moveMonkeys()
-{
-    for (auto monkey : monkeys)
-    {
-        monkey->move(map);
-    }
 }
 
 void showBootSplash()
@@ -76,15 +62,6 @@ void showBootSplash()
 
     sleep(bootSplashTime);
     Utils::clearConsole();
-}
-
-void showInfo()
-{
-    std::cout << Utils::CYAN;
-    std::cout << "Wood: 1213\n";
-    std::cout << "Rock: 531\n";
-    std::cout << "Monkey: 37\n\n";
-    std::cout << Utils::RESET;
 }
 
 void sleep(int time) { std::this_thread::sleep_for(std::chrono::milliseconds(time)); };

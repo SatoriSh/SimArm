@@ -15,6 +15,9 @@ public:
     void render() const;
     bool canMove(int x, int y) const; // по сути карте лучше знать
 
+    int getHeight() const { return HEIGHT; };
+    int getWidth() const { return WIDTH; };
+
 private:
     const int HEIGHT = 20;
     const int WIDTH = 50;
