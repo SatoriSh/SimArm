@@ -16,8 +16,8 @@ public:
     bool canMove(int x, int y) const; // по сути карте лучше знать
 
 private:
-    const int HEIGHT = 30;
-    const int WIDTH = 90;
+    const int HEIGHT = 20;
+    const int WIDTH = 50;
     std::string grass = "~^";
     const std::vector<std::shared_ptr<Monkey>>& monkeysRef; // ссылка на вектор monkeys
     const std::vector<std::shared_ptr <NaturalObjects>>& naturalObjectsRef;

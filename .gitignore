@@ -3,3 +3,9 @@ builds/
 main
 .vscode/
 Makefile
+*.sln
+*.vcxproj
+*.filters
+*.user
+.vs/
+out/

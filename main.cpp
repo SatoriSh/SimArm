@@ -1,3 +1,7 @@
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #include <vector>
 #include <thread>
 #include <chrono>
@@ -17,7 +21,6 @@ void showInfo();
 void moveMonkeys();
 void sleep(int);
 
-// я не ебу что лучше, кинуть всё в один вектор или вот так и похуй
 std::vector<std::shared_ptr<Monkey>> monkeys;
 std::vector<std::shared_ptr<NaturalObjects>> naturalObjects;
 
@@ -25,32 +28,15 @@ Map map(monkeys, naturalObjects);
 
 int main()
 {
+    #ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    #endif
+
+
     std::cout << std::endl;
     Utils::hideCursor();
 
     showBootSplash();
-
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 2, 1));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 3, 2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 89, 6));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 89, 7));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 5, 29));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 5, 29));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 6, 29));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 7, 29));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 8, 29));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 9, 29));
-
-
-    naturalObjects.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 1, 1));
-    naturalObjects.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 2, 2));
-    naturalObjects.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 3, 3));
-    naturalObjects.push_back(std::make_shared<Mountain>(40, 15, "⛰️ ", 4, 4));
-    naturalObjects.push_back(std::make_shared<Tree>(40, 15, "🌳", 5, 5));
-    naturalObjects.push_back(std::make_shared<Tree>(40, 15, "🌳", 6, 6));
-    naturalObjects.push_back(std::make_shared<Tree>(40, 15, "🌳", 7, 7));
-    naturalObjects.push_back(std::make_shared<Tree>(40, 15, "🌳", 8, 8));
-
 
     while (true)
     {
