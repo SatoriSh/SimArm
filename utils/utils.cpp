@@ -12,8 +12,8 @@ const std::string Utils::RESET = "\033[0m";
 
 int Utils::getRandomInt(int min, int max)
 {
-    static std::mt19937 rng{ std::random_device{}() };
-    static std::uniform_int_distribution<int> dist(min, max);
+    static std::mt19937 rng{ std::random_device{}() }; // static - генератор создается 1 раз
+    std::uniform_int_distribution<int> dist(min, max); // распределения создаем постоянно
     return dist(rng);
 }
 

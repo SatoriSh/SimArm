@@ -18,6 +18,8 @@ public:
     int getHeight() const { return HEIGHT; };
     int getWidth() const { return WIDTH; };
 
+    std::shared_ptr<void> getObjectOnCell(int x, int y) const;
+
 private:
     const int HEIGHT = 22;
     const int WIDTH = 60;
@@ -25,5 +27,4 @@ private:
     const std::vector<std::shared_ptr<Monkey>>& monkeysRef; // ссылка на вектор monkeys
     const std::vector<std::shared_ptr <NaturalObjects>>& naturalObjectsRef;
     std::string getObjectView(int x, int y) const;
-    std::shared_ptr<void> getObjectOnCell(int x, int y) const;
 };

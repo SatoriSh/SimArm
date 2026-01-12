@@ -4,13 +4,9 @@
 World::World() 
     : map(monkeys, naturalObjects)
 {
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 5,2));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 41, 4));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 13, 5));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 34, 7));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 15, 13));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 49, 9));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 23, 17));
+    pause = false;
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", map.getWidth() - 1, 0));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 0, map.getHeight() - 1));
 }
 
 int World::getUpdateTime() const
@@ -20,6 +16,8 @@ int World::getUpdateTime() const
 
 void World::updateTick()
 {
+    if (pause) return;
+
     moveMonkeys();
 
     map.render();
@@ -32,6 +30,23 @@ void World::moveMonkeys()
     for (std::shared_ptr<Monkey>& monkey : monkeys)
     {
         monkey->move(map);
+    }
+}
+
+void World::addMonkey()
+{
+    int x;
+    int y;
+
+    for (int i = 0; i < attemptsToSpawn; i++)
+    {
+        x = Utils::getRandomInt(0, map.getWidth() - 1);
+        y = Utils::getRandomInt(0, map.getHeight() - 1);
+        if (map.getObjectOnCell(x,y) == nullptr)
+        {
+            monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", x, y));
+            break;
+        }
     }
 }
 
