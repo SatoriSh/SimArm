@@ -26,6 +26,13 @@ int main()
 {
     #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
+
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD mode;
+    GetConsoleMode(hConsole, &mode);
+    SetConsoleMode(hConsole, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+    std::cout << "\033[8;65;238t" << std::flush;
+
     #endif
 
     std::cout << std::endl;

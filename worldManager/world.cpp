@@ -20,11 +20,11 @@ int World::getUpdateTime() const
 
 void World::updateTick()
 {
-    showInfo();
-
     moveMonkeys();
 
     map.render();
+
+    showInfo();
 }
 
 void World::moveMonkeys()
@@ -38,9 +38,8 @@ void World::moveMonkeys()
 void World::showInfo()
 {
     std::cout << Utils::CYAN;
-    std::cout << "Wood: " << woodCount << std::endl;
-    std::cout << "Rock: " << rockCount << std::endl;
-    std::cout << "Monkeys: " << monkeys.size() << "\n\n";
+    std::cout << std::string(map.getWidth() * 2, '-') << std::endl;
+    std::cout << "INFO:\nWood: " << woodCount << " Rock: " << rockCount << " Monkeys: " << monkeys.size() << "\n\n";
     std::cout << Utils::RESET;
 }
 
