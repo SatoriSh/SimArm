@@ -39,7 +39,8 @@ void World::showInfo()
 {
     std::cout << Utils::CYAN;
     std::cout << std::string(map.getWidth() * 2, '-') << std::endl;
-    std::cout << "INFO:\nWood: " << woodCount << " Rock: " << rockCount << " Monkeys: " << monkeys.size() << "\n\n";
+    std::cout << std::string(map.getWidth(), ' ') << Utils::RED << "INFO" << Utils::BLUE << std::endl;
+    std::cout << std::string(map.getWidth() / 2, ' ') << "\t\t        Wood: " << woodCount << "    Rock: " << rockCount << "    Monkeys: " << monkeys.size() << std::endl;
     std::cout << Utils::RESET;
 }
 

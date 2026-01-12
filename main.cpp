@@ -31,7 +31,7 @@ int main()
     DWORD mode;
     GetConsoleMode(hConsole, &mode);
     SetConsoleMode(hConsole, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
-    std::cout << "\033[8;65;238t" << std::flush;
+    std::cout << "\033[8;65;238t" << std::flush; // команда которая растягивает терминал на 1920x1080
 
     #endif
 
