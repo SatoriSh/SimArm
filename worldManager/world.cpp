@@ -54,8 +54,12 @@ void World::showInfo()
 {
     std::cout << Utils::CYAN;
     std::cout << std::string(map.getWidth() * 2, '-') << std::endl;
-    std::cout << std::string(map.getWidth(), ' ') << Utils::RED << "INFO" << Utils::BLUE << std::endl;
-    std::cout << std::string(map.getWidth() / 2, ' ') << "\t\t        Wood: " << woodCount << "    Rock: " << rockCount << "    Monkeys: " << monkeys.size() << std::endl;
+    std::cout << std::string(map.getWidth(), ' ') << Utils::RED << "ИНФОРМАЦИЯ" << Utils::BLUE << std::endl;
+    std::cout << std::string(map.getWidth() / 2, ' ') << "\t\t      Дерево: " << woodCount << "    Камень: " << rockCount << "    Армяне: " << monkeys.size() << std::endl;
+
+    std::cout << std::string(map.getWidth() / 2, ' ') << Utils::RED << "\t\tКЛАВИШИ ДЛЯ ВЗАИМОДЕЙСТВИЯ" << Utils::BLUE << std::endl;
+    std::cout << "\t\t\t\t1 - создать армяна\n\t\t\t\t2 - заспавнить случайный ресурс\n\t\t\t\t3 - начать волну пропустив время ожидания" << std::endl;
+
     std::cout << Utils::RESET;
 }
 
