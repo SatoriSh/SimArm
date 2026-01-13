@@ -24,12 +24,11 @@ class World
     bool pause;
 
   private:
-    int updateTime = 1000;
+    int updateTime = 250;
     int woodCount = 0;
     int rockCount = 0;
     int attemptsToSpawn = 100;
     void moveMonkeys();
-    void showInfo();
 
     std::function<void(const std::string &, const std::string &)> onEvent; // сигнал
 };

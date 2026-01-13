@@ -6,6 +6,8 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <cstdlib>
+
 #include "utils/utils.h"
 #include "map.h"
 #include "entities/entity.h"
@@ -17,6 +19,10 @@
 
 const int bootSplashTime = 250;
 const int logoAnimationUpdateTime = 25;
+
+// constexpr - чуть надежнее, переменна€ вычислитс€ на этапе компил€ции
+constexpr char SPACE = 32;
+constexpr char ESC = 27;
 
 void showBootSplash();
 void sleep(int);
@@ -49,7 +55,11 @@ int main()
         Utils::moveCursorHome();
         
         inputHandler();
-        world.updateTick();
+        if (!world.pause)
+        {
+            world.updateTick();
+            consoleUI.showPanelUI();
+        }
 
         sleep(world.getUpdateTime());
     }
@@ -65,14 +75,19 @@ void inputHandler()
 
         if (ch == '1' && !world.pause)
             world.addMonkey();
-        else if (ch == ' ') // space
+        else if (ch == SPACE)
             world.pause = !world.pause;
+        else if (ch == ESC)
+        {
+            Utils::clearConsole();
+            std::exit(0);
+        }
 
         while (_kbhit()) char a = _getch(); // очистка буффера чтобы игрок не смог заспамить команды
     }
 }
 
-void showBootSplash()
+void showBootSplash() // убрать в systemUI
 {
     std::cout << Utils::GREEN;
 
