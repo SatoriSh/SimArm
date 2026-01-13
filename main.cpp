@@ -13,7 +13,7 @@
 #include "entities/mountain.h"
 #include "entities/tree.h"
 #include "worldManager/world.h"
-
+#include "UI/consoleUI.h"
 
 const int bootSplashTime = 250;
 const int logoAnimationUpdateTime = 25;
@@ -35,6 +35,9 @@ int main()
     SetConsoleMode(hConsole, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
     std::cout << "\033[8;65;238t" << std::flush; // команда которая растягивает терминал на 1920x1080
     #endif
+    ConsoleUI consoleUI;
+
+    world.setEventHandler([&consoleUI](const std::string &message, const std::string &color) { consoleUI.log(message,color); });
 
     std::cout << std::endl;
     Utils::hideCursor();

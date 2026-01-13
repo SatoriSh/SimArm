@@ -1,5 +1,6 @@
 ﻿#include "world.h"
 #include "../utils/utils.h"
+#include <string>
 
 World::World() 
     : map(monkeys, naturalObjects)
@@ -45,9 +46,15 @@ void World::addMonkey()
         if (map.getObjectOnCell(x,y) == nullptr)
         {
             monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", x, y));
+            onEvent("Создан новый армян! Теперь их " + std::to_string(monkeys.size()), Utils::GREEN); // emit
             break;
         }
     }
+}
+
+void World::setEventHandler(std::function<void(const std::string &, const std::string &)> handler)
+{
+    onEvent = handler;
 }
 
 void World::showInfo()
