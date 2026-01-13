@@ -14,13 +14,25 @@ void Entity::move(const Map& map)
         int direction = Utils::getRandomInt(1, 4); // 1 - up, 2 - right, 3 - down, 4 - left
 
         if (direction == 1 && map.canMove(x, y - 1))
+        {
             setPosition(x, y - 1);
+            break;
+        }
         else if (direction == 2 && map.canMove(x + 1, y))
+        {
             setPosition(x + 1, y);
+            break;
+        }
         else if (direction == 3 && map.canMove(x, y + 1))
+        {
             setPosition(x, y + 1);
+            break;
+        }
         else if (direction == 4 && map.canMove(x - 1, y))
+        {
             setPosition(x - 1, y);
+            break;
+        }
     }
 }
 
