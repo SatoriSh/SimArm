@@ -1,6 +1,6 @@
-#ifdef _WIN32
+п»ї#ifdef _WIN32
 #include <windows.h>
-#include <conio.h> // для проверки нажатия клавиш
+#include <conio.h> // РґР»СЏ РїСЂРѕРІРµСЂРєРё РЅР°Р¶Р°С‚РёСЏ РєР»Р°РІРёС€
 #endif
 
 #include <vector>
@@ -17,10 +17,10 @@
 #include "worldManager/world.h"
 #include "UI/consoleUI.h"
 
-const int bootSplashTime = 250;
+const int bootSplashTime = 2000;
 const int logoAnimationUpdateTime = 25;
 
-// constexpr - чуть надежнее, переменная вычислится на этапе компиляции
+// constexpr - С‡СѓС‚СЊ РЅР°РґРµР¶РЅРµРµ, РїРµСЂРµРјРµРЅРЅР°СЏ РІС‹С‡РёСЃР»РёС‚СЃСЏ РЅР° СЌС‚Р°РїРµ РєРѕРјРїРёР»СЏС†РёРё
 constexpr char SPACE = 32;
 constexpr char ESC = 27;
 
@@ -39,9 +39,10 @@ int main()
     DWORD mode;
     GetConsoleMode(hConsole, &mode);
     SetConsoleMode(hConsole, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
-    std::cout << "\033[8;65;238t" << std::flush; // команда которая растягивает терминал на 1920x1080
+    std::cout << "\033[8;65;238t" << std::flush; // РєРѕРјР°РЅРґР° РєРѕС‚РѕСЂР°СЏ СЂР°СЃС‚СЏРіРёРІР°РµС‚ С‚РµСЂРјРёРЅР°Р» РЅР° 1920x1080
     #endif
-    ConsoleUI consoleUI;
+
+    ConsoleUI consoleUI(world);
 
     world.setEventHandler([&consoleUI](const std::string &message, const std::string &color) { consoleUI.log(message,color); });
 
@@ -83,11 +84,11 @@ void inputHandler()
             std::exit(0);
         }
 
-        while (_kbhit()) char a = _getch(); // очистка буффера чтобы игрок не смог заспамить команды
+        while (_kbhit()) char a = _getch(); // РѕС‡РёСЃС‚РєР° Р±СѓС„С„РµСЂР° С‡С‚РѕР±С‹ РёРіСЂРѕРє РЅРµ СЃРјРѕРі Р·Р°СЃРїР°РјРёС‚СЊ РєРѕРјР°РЅРґС‹
     }
 }
 
-void showBootSplash() // убрать в systemUI
+void showBootSplash() // СѓР±СЂР°С‚СЊ РІ systemUI
 {
     std::cout << Utils::GREEN;
 
@@ -101,7 +102,6 @@ void showBootSplash() // убрать в systemUI
     sleep(logoAnimationUpdateTime);
     std::cout << R"(|____/|_|_| |_| |_/_/   \_|_|  |_| |_| |_|)" << std::endl;
     std::cout << std::endl << std::endl << std::endl;
-
     sleep(bootSplashTime);
     Utils::clearConsole();
 }

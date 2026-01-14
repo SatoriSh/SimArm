@@ -1,19 +1,24 @@
-#include "consoleUI.h"
+ï»¿#include "consoleUI.h"
 #include "../utils/utils.h"
+
+
+ConsoleUI::ConsoleUI(World& w) 
+    : world(w)
+{
+
+}
 
 void ConsoleUI::showPanelUI() const
 {
-    /*
     std::cout << Utils::CYAN << std::endl;
 
-    std::cout << Utils::RED << "\t\tÈÍÔÎÐÌÀÖÈß" << Utils::BLUE << std::endl;
-    std::cout << "\t\t      Äåðåâî: " << woodCount << "    Êàìåíü: " << rockCount << "    Àðìÿíå: " << monkeys.size() << std::endl;
+    std::cout << Utils::RED << "\t\tÐ˜ÐÐ¤ÐžÐ ÐœÐÐ¦Ð˜Ð¯" << Utils::BLUE << std::endl;
+    std::cout << "\t\t      Ð”ÐµÑ€ÐµÐ²Ð¾: " << world.getWoodCount() << "    ÐšÐ°Ð¼ÐµÐ½ÑŒ: " << world.getRockCount() << "    ÐÑ€Ð¼ÑÐ½Ðµ: " << world.monkeys.size() << std::endl;
 
-    std::cout << Utils::RED << "\t\tÊËÀÂÈØÈ ÄËß ÂÇÀÈÌÎÄÅÉÑÒÂÈß" << Utils::BLUE << std::endl;
-    std::cout << "\t\t\t\t1 - ñîçäàòü àðìÿíà\n\t\t\t\t2 - çàñïàâíèòü ñëó÷àéíûé ðåñóðñ\n\t\t\t\t3 - íà÷àòü âîëíó " "ïðîïóñòèâ âðåìÿ îæèäàíèÿ" << std::endl;
+    std::cout << Utils::RED << "\t\tÐšÐ›ÐÐ’Ð˜Ð¨Ð˜ Ð”Ð›Ð¯ Ð’Ð—ÐÐ˜ÐœÐžÐ”Ð•Ð™Ð¡Ð¢Ð’Ð˜Ð¯" << Utils::BLUE << std::endl;
+    std::cout << "\t\t\t\t1 - ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ð°Ñ€Ð¼ÑÐ½Ð°\n\t\t\t\t2 - Ð·Ð°ÑÐ¿Ð°Ð²Ð½Ð¸Ñ‚ÑŒ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¹ Ñ€ÐµÑÑƒÑ€Ñ\n\t\t\t\t3 - Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ð²Ð¾Ð»Ð½Ñƒ " "Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð² Ð²Ñ€ÐµÐ¼Ñ Ð¾Ð¶Ð¸Ð´Ð°Ð½Ð¸Ñ" << std::endl;
 
     std::cout << Utils::RESET;
-    */
 
     if (logs.size() < 1)
         return;
@@ -34,4 +39,10 @@ void ConsoleUI::showPanelUI() const
 void ConsoleUI::log(const std::string& message, const std::string& color)
 {
     logs.push_back(color + message + Utils::RESET);
+}
+
+
+ConsoleUI::~ConsoleUI()
+{
+
 }

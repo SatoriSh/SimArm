@@ -52,6 +52,15 @@ void World::setEventHandler(std::function<void(const std::string &, const std::s
     onEvent = handler;
 }
 
+int World::getWoodCount() const
+{
+    return woodCount;
+}
+int World::getRockCount() const
+{
+    return rockCount;
+}
+
 World::~World()
 {
 

@@ -16,6 +16,8 @@ class World
     void updateTick();
     void addMonkey();
     void setEventHandler(std::function<void(const std::string &, const std::string &)> handler); // обработчик для сигнала
+    int getWoodCount() const;
+    int getRockCount() const;
 
     std::vector<std::shared_ptr<Monkey>> monkeys;
     std::vector<std::shared_ptr<NaturalObjects>> naturalObjects;
