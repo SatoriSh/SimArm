@@ -17,8 +17,8 @@ void ConsoleUI::showPanelUI() const
 
     std::cout << Utils::RED << "\t\t\t\t\t\t\t    КЛАВИШИ ДЛЯ ВЗАИМОДЕЙСТВИЯ:" << Utils::BLUE << std::endl;
     std::cout << "\t\t\t\t\t\t\t1 - создать армяна\n\t\t\t\t\t\t\t2 - заспавнить случайный ресурс\n\t\t\t\t\t\t\t3 - начать волну " "пропустив время ожидания" << std::endl;
-
-    std::cout << Utils::RESET;
+    drawSeparator();
+    std::cout << Utils::RED << std::string(70, ' ') << "ЛОГИ:" << Utils::BLUE << "\n";
 
     if (logs.size() < 1)
         return;
@@ -27,7 +27,8 @@ void ConsoleUI::showPanelUI() const
     {
         try
         {
-            std::cout << logs.at(i) << std::endl;
+            std::cout << "\r";
+            std::cout << std::string(56, ' ') << logs.at(i) << "\n";
         }
         catch (const std::out_of_range)
         {
@@ -45,7 +46,6 @@ void ConsoleUI::drawSeparator() const
 {
     std::cout << Utils::CYAN;
     std::cout << "\t\t  " << std::string(world.map.getWidth() * 2, '-') << "\n";
-    std::cout << Utils::RESET;
 }
 
 ConsoleUI::~ConsoleUI()
