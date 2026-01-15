@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
+#include "entity.h"
 
-class NaturalObjects
+class NaturalObjects : public Entity
 {
 public:
     enum ResourceType
@@ -10,21 +11,13 @@ public:
         Rock
     };
 
-    NaturalObjects(ResourceType resourceType, int health, int resourceAmount, std::string view, int x, int y);
+    NaturalObjects(ResourceType resourceType, int health, int resourceAmount, std::string view, int x, int y, Map& map);
     virtual ~NaturalObjects();
 
-    int getHealth() const { return health; };
     int getResourceAmount() const { return resourceAmount; };
-    int getX() const { return x; };
-    int getY() const { return y; };
-    std::string getView() const { return view; };
     ResourceType getResourceType() const { return resourceType; };
 
 private:
     ResourceType resourceType;
-    int health;
     int resourceAmount;
-    std::string view;
-    int x;
-    int y;
 };

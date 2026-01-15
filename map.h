@@ -19,7 +19,7 @@ public:
     int getHeight() const { return HEIGHT; };
     int getWidth() const { return WIDTH; };
 
-    std::shared_ptr<void> getObjectOnCell(int x, int y) const;
+    std::shared_ptr<Entity> getObjectOnCell(int x, int y) const;
 
 private:
     const int HEIGHT = 22;

@@ -17,7 +17,7 @@
 #include "worldManager/world.h"
 #include "UI/consoleUI.h"
 
-const int bootSplashTime = 2000;
+const int bootSplashTime = 500;
 const int logoAnimationUpdateTime = 25;
 
 // constexpr - чуть надежнее, переменная вычислится на этапе компиляции

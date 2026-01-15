@@ -43,9 +43,8 @@ std::string Map::getObjectView(int x, int y) const
     return grass;
 }
 
-std::shared_ptr<void> Map::getObjectOnCell(int x, int y) const
+std::shared_ptr<Entity> Map::getObjectOnCell(int x, int y) const
 {
-
     for (const std::shared_ptr<Monkey>& monkey : monkeysRef)
     {
         if (monkey->getX() == x && monkey->getY() == y) return monkey;

@@ -48,12 +48,12 @@ void World::addObject(ObjectTypeToSpawnType objectTypeToSpawn)
                 probability = Utils::getRandomInt(0, 10); // кому не похуй на магические числа
                 if (probability >= 4)
                 {
-                    naturalObjects.push_back(std::make_shared<Tree>(30, 6, "🌳", x, y));
+                    naturalObjects.push_back(std::make_shared<Tree>(30, 6, "🌳", x, y, map));
                     onEvent("Создано новое дерево                           ", Utils::GREEN);
                 }
                 else
                 {
-                    naturalObjects.push_back(std::make_shared<Mountain>(70, 25, "⛰️", x, y));
+                    naturalObjects.push_back(std::make_shared<Mountain>(70, 25, "⛰️", x, y, map));
                     onEvent("Создана новая гора                           ", Utils::GREEN);
                 }
                 break;
