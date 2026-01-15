@@ -75,7 +75,9 @@ void inputHandler()
         char ch = _getch();
 
         if (ch == '1' && !world.pause)
-            world.addMonkey();
+            world.addObject(World::ObjectTypeToSpawnType::monkey);
+        else if (ch == '2' && !world.pause)
+            world.addObject(World::ObjectTypeToSpawnType::naturalObject);
         else if (ch == SPACE)
             world.pause = !world.pause;
         else if (ch == ESC)

@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
 #include "../worldManager/world.h"
 
 class ConsoleUI {
@@ -12,6 +15,7 @@ class ConsoleUI {
       void showPanelUI() const;
       void drawSeparator() const;
   private:
+      std::string getLocalTime() const;
       std::vector<std::string> logs;
       int logsCountToShow = 3;
       World &world;

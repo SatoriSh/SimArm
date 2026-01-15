@@ -5,6 +5,8 @@
 #include "../map.h"
 #include "../entities/monkey.h"
 #include "../entities/naturalObjects.h"
+#include "../entities/tree.h"
+#include "../entities/mountain.h"
 
 class World
 {
@@ -12,9 +14,16 @@ class World
     World();
     ~World();
     
+    enum ObjectTypeToSpawnType
+    {
+        naturalObject,
+        monkey
+    };
+    ObjectTypeToSpawnType objectTypeToSpawn = ObjectTypeToSpawnType::naturalObject;
+
     int getUpdateTime() const;
     void updateTick();
-    void addMonkey();
+    void addObject(ObjectTypeToSpawnType objectTypeToSpawn);
     void setEventHandler(std::function<void(const std::string &, const std::string &)> handler); // обработчик для сигнала
     int getWoodCount() const;
     int getRockCount() const;

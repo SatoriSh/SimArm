@@ -39,7 +39,19 @@ void ConsoleUI::showPanelUI() const
 
 void ConsoleUI::log(const std::string& message, const std::string& color)
 {
-    logs.push_back(color + message + Utils::RESET);
+    logs.push_back(Utils::RESET + getLocalTime() + ": " + color + message + Utils::RESET);
+}
+
+std::string ConsoleUI::getLocalTime() const
+{
+    std::time_t t = std::time(nullptr);
+    std::tm local{};
+
+    localtime_s(&local, &t);
+
+    std::ostringstream oss;
+    oss << std::put_time(&local, "%H:%M:%S");
+    return oss.str();
 }
 
 void ConsoleUI::drawSeparator() const
