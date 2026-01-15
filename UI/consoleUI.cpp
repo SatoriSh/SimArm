@@ -10,13 +10,13 @@ ConsoleUI::ConsoleUI(World& w)
 
 void ConsoleUI::showPanelUI() const
 {
-    std::cout << Utils::CYAN << std::endl;
+    drawSeparator();
+    std::cout << Utils::RED << "\t\t\t\t\t\t\t\t    ИНФОРМАЦИЯ:" << Utils::BLUE << std::endl;
+    std::cout << "\t\t\t\t\t\t\tДерево: " << world.getWoodCount() << "    Камень: " << world.getRockCount() << "    Армяне: " << world.monkeys.size() << std::endl;
+    drawSeparator();
 
-    std::cout << Utils::RED << "\t\tИНФОРМАЦИЯ" << Utils::BLUE << std::endl;
-    std::cout << "\t\t      Дерево: " << world.getWoodCount() << "    Камень: " << world.getRockCount() << "    Армяне: " << world.monkeys.size() << std::endl;
-
-    std::cout << Utils::RED << "\t\tКЛАВИШИ ДЛЯ ВЗАИМОДЕЙСТВИЯ" << Utils::BLUE << std::endl;
-    std::cout << "\t\t\t\t1 - создать армяна\n\t\t\t\t2 - заспавнить случайный ресурс\n\t\t\t\t3 - начать волну " "пропустив время ожидания" << std::endl;
+    std::cout << Utils::RED << "\t\t\t\t\t\t\t    КЛАВИШИ ДЛЯ ВЗАИМОДЕЙСТВИЯ:" << Utils::BLUE << std::endl;
+    std::cout << "\t\t\t\t\t\t\t1 - создать армяна\n\t\t\t\t\t\t\t2 - заспавнить случайный ресурс\n\t\t\t\t\t\t\t3 - начать волну " "пропустив время ожидания" << std::endl;
 
     std::cout << Utils::RESET;
 
@@ -41,6 +41,12 @@ void ConsoleUI::log(const std::string& message, const std::string& color)
     logs.push_back(color + message + Utils::RESET);
 }
 
+void ConsoleUI::drawSeparator() const
+{
+    std::cout << Utils::CYAN;
+    std::cout << "\t\t  " << std::string(world.map.getWidth() * 2, '-') << "\n";
+    std::cout << Utils::RESET;
+}
 
 ConsoleUI::~ConsoleUI()
 {

@@ -10,14 +10,19 @@ Map::Map(const std::vector<std::shared_ptr<Monkey>>& monkeys, const std::vector<
 
 void Map::render() const
 {
-    std::cout << Utils::GREEN;
+    std::cout << Utils::CYAN << "\t\t  " << std::string(WIDTH * 2, '-') << "\n" << Utils::GREEN;
     for (int y = 0; y < HEIGHT; y++)
     {
+        std::cout << "\t\t ";
         for (int x = 0; x < WIDTH; x++)
         {
+            if (x == 0)
+                std::cout << Utils::CYAN << "|" << Utils::GREEN;
             std::cout << "" << getObjectView(x, y);
+            if (x == WIDTH - 1)
+                std::cout << Utils::CYAN << "|" << Utils::GREEN;
         }
-        std::cout << std::endl;
+        std::cout << "\n"; // \n быстрее чем std::endl
     }
     std::cout << Utils::RESET;
 }
