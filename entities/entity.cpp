@@ -2,12 +2,12 @@
 #include "../map.h"
 #include "../utils/utils.h"
 
-Entity::Entity(int h, int d, std::string v, int x, int y)
-    : health(h), damage(d), view(v), x(x), y(y) // ну и синтаксис блять
+Entity::Entity(int h, int d, std::string v, int x, int y, Map& m)
+    : health(h), damage(d), view(v), x(x), y(y), map(m) // ну и синтаксис блять
 {
 };
 
-void Entity::move(const Map& map)
+void Entity::move()
 {
     for (int i = 0; i < 4; i++)
     {

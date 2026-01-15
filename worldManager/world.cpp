@@ -6,8 +6,8 @@ World::World()
     : map(monkeys, naturalObjects)
 {
     pause = false;
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", map.getWidth() - 1, 0));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 0, map.getHeight() - 1));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", map.getWidth() - 1, 0, map));
+    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 0, map.getHeight() - 1, map));
 }
 
 int World::getUpdateTime() const
@@ -25,7 +25,7 @@ void World::moveMonkeys()
 {
     for (std::shared_ptr<Monkey>& monkey : monkeys)
     {
-        monkey->move(map);
+        monkey->move();
     }
 }
 
@@ -58,7 +58,7 @@ void World::addObject(ObjectTypeToSpawnType objectTypeToSpawn)
                 }
                 break;
             case monkey:
-                monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", x, y));
+                monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", x, y, map));
                 onEvent("Создан новый армян                           ", Utils::GREEN); 
                 break;
             }

@@ -1,15 +1,16 @@
 #pragma once
 #include <iostream>
+#include <string>
 
-class Map; 
+class Map; // класс map существует, подробности позже
 
 class Entity
 {
 public:
-    Entity(int health, int damage, std::string view, int x, int y);
+    Entity(int health, int damage, std::string view, int x, int y, Map& map);
     virtual ~Entity();
 
-    void move(const Map& map);
+    void move();
     void setPosition(int x, int y);
 
     int getHealth() const { return this->health; };
@@ -24,4 +25,5 @@ private:
     std::string view;
     int x;
     int y;
+    Map &map;
 };

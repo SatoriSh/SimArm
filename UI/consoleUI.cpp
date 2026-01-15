@@ -12,11 +12,11 @@ void ConsoleUI::showPanelUI() const
 {
     drawSeparator();
     std::cout << Utils::RED << "\t\t\t\t\t\t\t\t    ИНФОРМАЦИЯ:" << Utils::BLUE << std::endl;
-    std::cout << "\t\t\t\t\t\t\tДерево: " << world.getWoodCount() << "    Камень: " << world.getRockCount() << "    Армяне: " << world.monkeys.size() << std::endl;
+    std::cout << "\t\t\t\t\t\t\tДоски: " << world.getWoodCount() << "    Камни: " << world.getRockCount() << "    Армяне: " << world.monkeys.size() << std::endl;
     drawSeparator();
-
+    
     std::cout << Utils::RED << "\t\t\t\t\t\t\t    КЛАВИШИ ДЛЯ ВЗАИМОДЕЙСТВИЯ:" << Utils::BLUE << std::endl;
-    std::cout << "\t\t\t\t\t\t\t1 - создать армяна\n\t\t\t\t\t\t\t2 - заспавнить случайный ресурс\n\t\t\t\t\t\t\t3 - начать волну " "пропустив время ожидания" << std::endl;
+    std::cout << "\t\t\t\t\t\t\t1 - создать армяна\n\t\t\t\t\t\t\t2 - заспавнить случайный ресурс\n\t\t\t\t\t\t\tпробел - пауза/продолжить" << std::endl;
     drawSeparator();
     std::cout << Utils::RED << std::string(70, ' ') << "ЛОГИ:" << Utils::BLUE << "\n";
 

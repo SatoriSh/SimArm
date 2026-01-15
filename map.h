@@ -1,10 +1,11 @@
 #pragma once
-
 #include <vector>
 #include <memory>
-#include "entities/monkey.h"
-#include "entities/naturalObjects.h"
+#include <string>
 
+class Monkey;
+class NaturalObjects;
+class Entity;
 
 class Map
 {

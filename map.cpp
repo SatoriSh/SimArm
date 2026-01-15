@@ -1,6 +1,8 @@
 #include "map.h"
 #include "utils/utils.h"
-
+#include "entities/entity.h"
+#include "entities/monkey.h"
+#include "entities/naturalObjects.h"
 
 
 Map::Map(const std::vector<std::shared_ptr<Monkey>>& monkeys, const std::vector<std::shared_ptr<NaturalObjects>>& naturalObjects)
