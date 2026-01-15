@@ -18,12 +18,13 @@ public:
     std::string getView() const { return this->view; };
     int getX() const { return this->x; };
     int getY() const { return this->y; };
-
-private:
+  private:
     int health;
     int damage;
     std::string view;
     int x;
     int y;
+
+  protected:
     Map &map;
 };
