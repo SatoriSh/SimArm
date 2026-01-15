@@ -3,7 +3,6 @@
 #include "entity.h"
 
 class Map;
-class NaturalObjects;
 
 class Monkey : public Entity
 {
@@ -12,7 +11,8 @@ class Monkey : public Entity
     ~Monkey();
 
     void explore();
-
-  private:
-    std::shared_ptr<NaturalObjects> naturalObject;
+    void mining();
+    void updateState() override;
+  protected:
+    std::shared_ptr<Entity> naturalObject;
 };

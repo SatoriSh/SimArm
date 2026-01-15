@@ -1,6 +1,7 @@
-﻿#include "world.h"
+﻿#include <string>
+#include <algorithm>
+#include "world.h"
 #include "../utils/utils.h"
-#include <string>
 
 World::World() 
     : map(monkeys, naturalObjects)
@@ -18,14 +19,31 @@ int World::getUpdateTime() const
 void World::updateTick()
 {
     moveMonkeys();
+
+    refreshEntities();
+
     map.render();
+}
+
+void World::refreshEntities()
+{
+    monkeys.erase(std::remove_if(monkeys.begin(), monkeys.end(),
+                                 [](const std::shared_ptr<Monkey> &m)
+                                 {
+                                     return !m->isAlive; 
+                                 }),
+                  monkeys.end());
+
+    naturalObjects.erase(std::remove_if(naturalObjects.begin(), naturalObjects.end(),
+                                        [](const std::shared_ptr<NaturalObjects> &n) { return !n->isAlive; }),
+                         naturalObjects.end());
 }
 
 void World::moveMonkeys()
 {
     for (std::shared_ptr<Monkey>& monkey : monkeys)
     {
-        monkey->move();
+        monkey->updateState();
     }
 }
 

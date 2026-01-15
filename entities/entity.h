@@ -18,6 +18,9 @@ public:
     std::string getView() const { return this->view; };
     int getX() const { return this->x; };
     int getY() const { return this->y; };
+    virtual void takeDamage(int damage);
+    virtual void updateState();
+    bool isAlive = true;
   protected:
     int health;
     int damage;

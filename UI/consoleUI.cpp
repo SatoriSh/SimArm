@@ -11,7 +11,7 @@ ConsoleUI::ConsoleUI(World& w)
 void ConsoleUI::showPanelUI() const
 {
     drawSeparator();
-    std::cout << Utils::RED << "\t\t\t\t\t\t\t\t    ИНФОРМАЦИЯ:" << Utils::BLUE << std::endl;
+    std::cout << Utils::RED << "\t\t\t\t\t\t\t\t    ИНФОРМАЦИЯ:" << Utils::BLUE << std::endl; // УБРАТЬ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
     std::cout << "\t\t\t\t\t\t\tДоски: " << world.getWoodCount() << "    Камни: " << world.getRockCount() << "    Армяне: " << world.monkeys.size() << std::endl;
     drawSeparator();
     

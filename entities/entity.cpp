@@ -36,6 +36,20 @@ void Entity::move()
     }
 }
 
+void Entity::takeDamage(int damage)
+{
+    health -= damage;
+    if (health <= 0)
+    {
+        isAlive = false;
+    }
+}
+
+void Entity::updateState()
+{
+
+}
+
 void Entity::setPosition(int x, int y)
 {
     this->x = x;

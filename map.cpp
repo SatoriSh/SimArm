@@ -5,9 +5,10 @@
 #include "entities/naturalObjects.h"
 
 
-Map::Map(const std::vector<std::shared_ptr<Monkey>>& monkeys, const std::vector<std::shared_ptr<NaturalObjects>>& naturalObjects)
+Map::Map(std::vector<std::shared_ptr<Monkey>>& monkeys, std::vector<std::shared_ptr<NaturalObjects>>& naturalObjects)
     : monkeysRef(monkeys), naturalObjectsRef(naturalObjects)
 {
+
 }
 
 void Map::render() const
