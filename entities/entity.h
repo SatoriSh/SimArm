@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "../utils/utils.h"
 
 class Map; // класс map существует, подробности позже
 
@@ -20,6 +21,7 @@ public:
     int getY() const { return this->y; };
     virtual void takeDamage(int damage);
     virtual void updateState();
+    void changeDirection();
     bool isAlive = true;
   protected:
     int health;
@@ -28,4 +30,8 @@ public:
     int x;
     int y;
     Map &map;
+    bool isMoveInCurrentTick = false;
+    int direction;
+    int movingCount = 0;
+    const int moveCountInOneDirection = Utils::getRandomInt(3, 8);
 };

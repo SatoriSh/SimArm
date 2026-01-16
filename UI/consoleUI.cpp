@@ -12,16 +12,16 @@ void ConsoleUI::showPanelUI() const
     drawSeparator();
     std::cout << Utils::YELLOW << std::string(68, ' ') << "ИНФОРМАЦИЯ:" << Utils::BLUE << std::endl;
     std::cout << std::string(47, ' ') << "Очки: " << world.getPoints() << "    Древесина: " << world.getWoodCount() << "    Камень: " << world.getRockCount()
-              << "    Армяне: " << world.monkeys.size() << std::endl;
+              << "    Армяне: " << world.monkeys.size() << "                        \n";
     drawSeparator();
 
     std::cout << Utils::YELLOW << std::string(60, ' ') << "КЛАВИШИ ДЛЯ ВЗАИМОДЕЙСТВИЯ:" << Utils::BLUE << std::endl;
-    std::cout << std::string(56, ' ') << "1 - создать армяна (нужно " << world.getPointsNeedToSpawnMonkey() << " очков)\n"
-              << std::string(56, ' ') << "2 - создать случайный ресурс (нужно " << world.getPointsNeedToSpawnNaturalObject() << " очков)\n"
-              << std::string(56, ' ') << "3 - ускорить время\n"
-              << std::string(56, ' ') << "4 - замедлить время\n"
-              << std::string(56, ' ') << "пробел - пауза/продолжить\n"
-              << std::string(56, ' ') << "ESC - выйти\n";
+    std::cout << std::string(56, ' ') << "1 - Создать армяна (нужно " << world.getPointsNeedToSpawnMonkey() << " очков)\n"
+              << std::string(56, ' ') << "2 - Создать случайный ресурс (нужно " << world.getPointsNeedToSpawnNaturalObject() << " очков)\n"
+              << std::string(56, ' ') << "3 - Ускорить время\n"
+              << std::string(56, ' ') << "4 - Замедлить время\n"
+              << std::string(56, ' ') << "Space - Пауза/Продолжить\n"
+              << std::string(56, ' ') << "Esc - выйти\n";
     drawSeparator();
 
     std::cout << Utils::YELLOW << std::string(70, ' ') << "ЛОГИ:" << Utils::BLUE << "\n";
@@ -41,6 +41,9 @@ void ConsoleUI::showPanelUI() const
             // pass
         }
     }
+    std::cout << "\r";
+    drawSeparator();
+    // цель
 }
 
 void ConsoleUI::log(const std::string& message, const std::string& color)

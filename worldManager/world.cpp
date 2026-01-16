@@ -7,8 +7,8 @@ World::World()
     : map(monkeys, naturalObjects)
 {
     pause = false;
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", map.getWidth() - 1, 0, map));
-    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 0, map.getHeight() - 1, map));
+    //monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", map.getWidth() - 1, 0, map));
+    //monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 0, map.getHeight() - 1, map));
 }
 
 int World::getUpdateTime() const
@@ -37,13 +37,13 @@ void World::refreshEntities()
             if (naturalObject.get()->getResourceType() == NaturalObjects::Wood)
             {
                 woodCount += naturalObject.get()->getResourceAmount();
-                onEvent("Добыто " + std::to_string(naturalObject.get()->getResourceAmount()) + " древесины                              ",
+                onEvent("Добыто " + std::to_string(naturalObject.get()->getResourceAmount()) + " древесины                                                     ",
                         Utils::GRAY);
             }
             else if (naturalObject.get()->getResourceType() == NaturalObjects::Rock)
             {
                 rockCount += naturalObject.get()->getResourceAmount();
-                onEvent("Добыто " + std::to_string(naturalObject.get()->getResourceAmount()) + " камня                                   ", 
+                onEvent("Добыто " + std::to_string(naturalObject.get()->getResourceAmount()) + " камня                                                     ", 
                         Utils::GRAY);
             }
         }
@@ -88,35 +88,35 @@ void World::addObject(ObjectTypeToSpawnType objectTypeToSpawn)
                 if (points >= getPointsNeedToSpawnNaturalObject())
                 {
                     probability = Utils::getRandomInt(0, 10); // кому не похуй на магические числа
-                    if (probability >= 4)
+                    if (probability >= 3)
                     {
                         naturalObjects.push_back(
                             std::make_shared<Tree>(120, Utils::getRandomInt(6, 12), "🌳", x, y, map));
-                        onEvent("Создано новое дерево                           ", Utils::GREEN);
+                        onEvent("Создано новое дерево                                                      ", Utils::GREEN);
                     }
                     else
                     {
                         naturalObjects.push_back(
                             std::make_shared<Mountain>(250, Utils::getRandomInt(15, 25), "⛰️", x, y, map));
-                        onEvent("Создана новая гора                           ", Utils::GREEN);
+                        onEvent("Создана новая гора                                                      ", Utils::GREEN);
                     }
                     points -= getPointsNeedToSpawnNaturalObject();
                 }
                 else
                 {
-                    onEvent("Недостаточно очков                           ", Utils::RED);
+                    onEvent("Недостаточно очков                                                      ", Utils::RED);
                 }
                 break;
             case monkey:
                 if (points >= getPointsNeedToSpawnMonkey())
                 {
                     monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", x, y, map));
-                    onEvent("Создан новый армян                           ", Utils::CYAN); 
+                    onEvent("Создан новый армян                                                      ", Utils::CYAN); 
                     points -= getPointsNeedToSpawnMonkey();
                 }
                 else
                 {
-                    onEvent("Недостаточно очков                           ", Utils::RED);
+                    onEvent("Недостаточно очков                                                      ", Utils::RED);
                 }
                 break;
             }
@@ -144,7 +144,7 @@ void World::setUpdateTime(char operation)
     else if (updateTime > maxUpdateTime)
         updateTime = maxUpdateTime;
 
-    onEvent("Время обновления мира изменено: " + std::to_string(updateTime) + "мс                   ", Utils::YELLOW);
+    onEvent("Время обновления мира изменено: " + std::to_string(updateTime) + "мс                                                   ", Utils::YELLOW);
 }
 
 int World::getWoodCount() const

@@ -38,16 +38,16 @@ class World
     bool pause;
 
   private:
-    int updateTime = 500;
-    const int minUpdateTime = 100;
-    const int maxUpdateTime = 1000;
+    int updateTime = 550;
+    const int minUpdateTime = 50;
+    const int maxUpdateTime = 1050;
     const int updateTimeChangeValue = 100;
     int woodCount = 0;
     int rockCount = 0;
     int attemptsToSpawn = 100;
     int points = 0;
     int pointsNeedToSpawnNaturalObject = 10;
-    int pointsNeedToSpawnMonkey = 50;
+    int pointsNeedToSpawnMonkey = 30;
     void updateEntitiesState();
     void refreshEntities();
     std::function<void(const std::string &, const std::string &)> onEvent; // сигнал
