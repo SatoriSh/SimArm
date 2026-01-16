@@ -30,6 +30,7 @@ class World
     int getPoints() const;
     int getPointsNeedToSpawnNaturalObject() const;
     int getPointsNeedToSpawnMonkey() const;
+    void setUpdateTime(char operation);
     std::vector<std::shared_ptr<Monkey>> monkeys;
     std::vector<std::shared_ptr<NaturalObjects>> naturalObjects;
     Map map;
@@ -37,7 +38,10 @@ class World
     bool pause;
 
   private:
-    int updateTime = 50;
+    int updateTime = 500;
+    const int minUpdateTime = 100;
+    const int maxUpdateTime = 1000;
+    const int updateTimeChangeValue = 100;
     int woodCount = 0;
     int rockCount = 0;
     int attemptsToSpawn = 100;

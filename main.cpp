@@ -78,6 +78,10 @@ void inputHandler()
             world.addObject(World::ObjectTypeToSpawnType::monkey);
         else if (ch == '2' && !world.pause)
             world.addObject(World::ObjectTypeToSpawnType::naturalObject);
+        else if (ch == '3' && !world.pause)
+            world.setUpdateTime('-');
+        else if (ch == '4' && !world.pause)
+            world.setUpdateTime('+');
         else if (ch == SPACE)
             world.pause = !world.pause;
         else if (ch == ESC)

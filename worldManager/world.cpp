@@ -132,6 +132,21 @@ void World::setEventHandler(std::function<void(const std::string &, const std::s
     onEvent = handler;
 }
 
+void World::setUpdateTime(char operation)
+{
+    if (operation == '+')
+        updateTime += updateTimeChangeValue;
+    else if (operation == '-')
+        updateTime -= updateTimeChangeValue;
+
+    if (updateTime < minUpdateTime)
+        updateTime = minUpdateTime;
+    else if (updateTime > maxUpdateTime)
+        updateTime = maxUpdateTime;
+
+    onEvent("Время обновления мира изменено: " + std::to_string(updateTime) + "мс                   ", Utils::YELLOW);
+}
+
 int World::getWoodCount() const
 {
     return woodCount;
