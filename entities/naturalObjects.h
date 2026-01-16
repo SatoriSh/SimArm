@@ -17,7 +17,12 @@ public:
     virtual ~NaturalObjects();
     int getResourceAmount() const { return resourceAmount; };
     ResourceType getResourceType() const { return resourceType; };
+
+    int getMinResAmount() const;
+    int getMaxResAmount() const;
   private:
     int resourceAmount;
+    int minResAmount;
+    int maxResAmount;
     ResourceType resourceType;
 };

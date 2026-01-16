@@ -11,13 +11,17 @@ ConsoleUI::ConsoleUI(World& w)
 void ConsoleUI::showPanelUI() const
 {
     drawSeparator();
-    std::cout << Utils::RED << "\t\t\t\t\t\t\t\t    ИНФОРМАЦИЯ:" << Utils::BLUE << std::endl; // УБРАТЬ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-    std::cout << "\t\t\t\t\t\t\tДоски: " << world.getWoodCount() << "    Камни: " << world.getRockCount() << "    Армяне: " << world.monkeys.size() << std::endl;
+    std::cout << Utils::RED << std::string(68, ' ') << "ИНФОРМАЦИЯ:" << Utils::BLUE << std::endl;
+    std::cout << std::string(41, ' ') << "Очки:" << world.getPoints() << "    Древесина: " << world.getWoodCount() << "    Камень: " << world.getRockCount()
+              << "    Армяне: " << world.monkeys.size() << std::endl;
     drawSeparator();
-    
-    std::cout << Utils::RED << "\t\t\t\t\t\t\t    КЛАВИШИ ДЛЯ ВЗАИМОДЕЙСТВИЯ:" << Utils::BLUE << std::endl;
-    std::cout << "\t\t\t\t\t\t\t1 - создать армяна\n\t\t\t\t\t\t\t2 - заспавнить случайный ресурс\n\t\t\t\t\t\t\tпробел - пауза/продолжить" << std::endl;
+
+    std::cout << Utils::RED << std::string(60, ' ') << "КЛАВИШИ ДЛЯ ВЗАИМОДЕЙСТВИЯ:" << Utils::BLUE << std::endl;
+    std::cout << std::string(56, ' ') << "1 - создать армяна\n"
+              << std::string(56, ' ') << "2 - заспавнить случайный ресурс\n"
+              << std::string(56, ' ') << "пробел - пауза/продолжить" << std::endl;
     drawSeparator();
+
     std::cout << Utils::RED << std::string(70, ' ') << "ЛОГИ:" << Utils::BLUE << "\n";
 
     if (logs.size() < 1)

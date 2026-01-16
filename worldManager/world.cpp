@@ -18,6 +18,8 @@ int World::getUpdateTime() const
 
 void World::updateTick()
 {
+    points++;
+
     updateEntitiesState();
 
     refreshEntities();
@@ -41,7 +43,7 @@ void World::refreshEntities()
             else if (naturalObject.get()->getResourceType() == NaturalObjects::Rock)
             {
                 rockCount += naturalObject.get()->getResourceAmount();
-                onEvent("Добыто" + std::to_string(naturalObject.get()->getResourceAmount()) + " камня                                   ", 
+                onEvent("Добыто " + std::to_string(naturalObject.get()->getResourceAmount()) + " камня                                   ", 
                         Utils::GRAY);
             }
         }
@@ -83,22 +85,39 @@ void World::addObject(ObjectTypeToSpawnType objectTypeToSpawn)
             switch (objectTypeToSpawn)
             {
             case naturalObject:
-                probability = Utils::getRandomInt(0, 10); // кому не похуй на магические числа
-                if (probability >= 4)
+                if (points >= getPointsNeedToSpawnNaturalObject())
                 {
-                    naturalObjects.push_back(
-                        std::make_shared<Tree>(30, 6, "🌳", x, y, map));
-                    onEvent("Создано новое дерево                           ", Utils::GREEN);
+                    probability = Utils::getRandomInt(0, 10); // кому не похуй на магические числа
+                    if (probability >= 4)
+                    {
+                        naturalObjects.push_back(
+                            std::make_shared<Tree>(120, Utils::getRandomInt(6, 12), "🌳", x, y, map));
+                        onEvent("Создано новое дерево                           ", Utils::GREEN);
+                    }
+                    else
+                    {
+                        naturalObjects.push_back(
+                            std::make_shared<Mountain>(250, Utils::getRandomInt(15, 25), "⛰️", x, y, map));
+                        onEvent("Создана новая гора                           ", Utils::GREEN);
+                    }
+                    points -= getPointsNeedToSpawnNaturalObject();
                 }
                 else
                 {
-                    naturalObjects.push_back(std::make_shared<Mountain>(70, 25, "⛰️", x, y, map));
-                    onEvent("Создана новая гора                           ", Utils::GREEN);
+                    onEvent("Недостаточно очков                           ", Utils::RED);
                 }
                 break;
             case monkey:
-                monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", x, y, map));
-                onEvent("Создан новый армян                           ", Utils::CYAN); 
+                if (points >= getPointsNeedToSpawnMonkey())
+                {
+                    monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", x, y, map));
+                    onEvent("Создан новый армян                           ", Utils::CYAN); 
+                    points -= getPointsNeedToSpawnMonkey();
+                }
+                else
+                {
+                    onEvent("Недостаточно очков                           ", Utils::RED);
+                }
                 break;
             }
             spawned = true;
@@ -120,6 +139,18 @@ int World::getWoodCount() const
 int World::getRockCount() const
 {
     return rockCount;
+}
+int World::getPoints() const
+{
+    return points;
+}
+int World::getPointsNeedToSpawnNaturalObject() const
+{
+    return pointsNeedToSpawnNaturalObject;
+}
+int World::getPointsNeedToSpawnMonkey() const
+{
+    return pointsNeedToSpawnMonkey;
 }
 
 World::~World()
