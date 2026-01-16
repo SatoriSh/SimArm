@@ -18,7 +18,7 @@ int World::getUpdateTime() const
 
 void World::updateTick()
 {
-    moveMonkeys();
+    updateEntitiesState();
 
     refreshEntities();
 
@@ -27,6 +27,26 @@ void World::updateTick()
 
 void World::refreshEntities()
 {
+    // это по хорошему надо проверять в updateState у naturalObject, но мне уже лень
+    for (const std::shared_ptr<NaturalObjects> &naturalObject : naturalObjects)
+    {
+        if (!naturalObject.get()->isAlive) 
+        {
+            if (naturalObject.get()->getResourceType() == NaturalObjects::Wood)
+            {
+                woodCount += naturalObject.get()->getResourceAmount();
+                onEvent("Добыто " + std::to_string(naturalObject.get()->getResourceAmount()) + " древесины                              ",
+                        Utils::GRAY);
+            }
+            else if (naturalObject.get()->getResourceType() == NaturalObjects::Rock)
+            {
+                rockCount += naturalObject.get()->getResourceAmount();
+                onEvent("Добыто" + std::to_string(naturalObject.get()->getResourceAmount()) + " камня                                   ", 
+                        Utils::GRAY);
+            }
+        }
+    }
+
     monkeys.erase(std::remove_if(monkeys.begin(), monkeys.end(),
                                  [](const std::shared_ptr<Monkey> &m)
                                  {
@@ -36,10 +56,10 @@ void World::refreshEntities()
 
     naturalObjects.erase(std::remove_if(naturalObjects.begin(), naturalObjects.end(),
                                         [](const std::shared_ptr<NaturalObjects> &n) { return !n->isAlive; }),
-                         naturalObjects.end());
+                  naturalObjects.end());
 }
 
-void World::moveMonkeys()
+void World::updateEntitiesState()
 {
     for (std::shared_ptr<Monkey>& monkey : monkeys)
     {
@@ -66,7 +86,8 @@ void World::addObject(ObjectTypeToSpawnType objectTypeToSpawn)
                 probability = Utils::getRandomInt(0, 10); // кому не похуй на магические числа
                 if (probability >= 4)
                 {
-                    naturalObjects.push_back(std::make_shared<Tree>(30, 6, "🌳", x, y, map));
+                    naturalObjects.push_back(
+                        std::make_shared<Tree>(30, 6, "🌳", x, y, map));
                     onEvent("Создано новое дерево                           ", Utils::GREEN);
                 }
                 else
@@ -77,7 +98,7 @@ void World::addObject(ObjectTypeToSpawnType objectTypeToSpawn)
                 break;
             case monkey:
                 monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", x, y, map));
-                onEvent("Создан новый армян                           ", Utils::GREEN); 
+                onEvent("Создан новый армян                           ", Utils::CYAN); 
                 break;
             }
             spawned = true;

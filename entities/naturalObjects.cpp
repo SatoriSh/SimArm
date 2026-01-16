@@ -3,7 +3,8 @@
 
 
 NaturalObjects::NaturalObjects(ResourceType rt, int h, int ra, std::string v, int x, int y, Map& m)
-    : Entity(h, 0, v, x, y, m)
+    : Entity(h, 0, v, x, y, m), 
+    resourceAmount(ra), resourceType(rt)
 {
 
 }

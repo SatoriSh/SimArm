@@ -8,6 +8,7 @@ const std::string Utils::YELLOW = "\033[33m";
 const std::string Utils::BLUE = "\033[34m";
 const std::string Utils::MAGENTA = "\033[35m";
 const std::string Utils::CYAN = "\033[36m";
+const std::string Utils::GRAY = "\033[90m";
 const std::string Utils::RESET = "\033[0m";
 
 int Utils::getRandomInt(int min, int max)

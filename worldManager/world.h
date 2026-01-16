@@ -27,7 +27,6 @@ class World
     void setEventHandler(std::function<void(const std::string &, const std::string &)> handler); // обработчик для сигнала
     int getWoodCount() const;
     int getRockCount() const;
-    void refreshEntities();
     std::vector<std::shared_ptr<Monkey>> monkeys;
     std::vector<std::shared_ptr<NaturalObjects>> naturalObjects;
     Map map;
@@ -39,7 +38,7 @@ class World
     int woodCount = 0;
     int rockCount = 0;
     int attemptsToSpawn = 100;
-    void moveMonkeys();
-
+    void updateEntitiesState();
+    void refreshEntities();
     std::function<void(const std::string &, const std::string &)> onEvent; // сигнал
 };

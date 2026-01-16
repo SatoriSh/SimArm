@@ -18,4 +18,5 @@ public:
     static const std::string MAGENTA;
     static const std::string CYAN;
     static const std::string RESET;
+    static const std::string GRAY;
 };

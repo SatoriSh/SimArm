@@ -12,7 +12,7 @@ Monkey::Monkey(int health, int damage, std::string view, int x, int y, Map& map)
 void Monkey::explore()
 {
     auto entityOnCellUp = map.getObjectOnCell(x, y - 1);
-    naturalObject = std::dynamic_pointer_cast<NaturalObjects>(entityOnCellUp);
+    naturalObject = std::dynamic_pointer_cast<NaturalObjects>(entityOnCellUp); // если entityOnCellUp это не NaturalObjects, то naturalObject = nullptr
     if (naturalObject != nullptr) return;
     auto entityOnCellDown = map.getObjectOnCell(x, y + 1);
     naturalObject = std::dynamic_pointer_cast<NaturalObjects>(entityOnCellDown);
