@@ -1,8 +1,8 @@
 #include "building.h"
 
 Building::Building(std::string v, int wN, int rN, int x, int y, Map& m)
-    : Entity(0, 0, view, x, y, map),
-    view(v), woodNeedForBuild(wN), rockNeedForBuild(rN), x(x), y(y)
+    : Entity(0, 0, v, x, y, m),
+    woodNeedForBuild(wN), rockNeedForBuild(rN)
 {
 
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include "naturalObjects.h"
-#include <iostream>
+#include <string>
 
 class Map;
 

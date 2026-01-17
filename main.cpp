@@ -87,6 +87,7 @@ void inputHandler()
         else if (ch == ESC)
         {
             Utils::clearConsole();
+            std::cout << Utils::RESET;
             std::exit(0);
         }
 

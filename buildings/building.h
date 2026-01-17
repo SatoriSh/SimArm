@@ -17,7 +17,7 @@ class Building : public Entity
   private:
     int woodNeedForBuild;
     int rockNeedForBuild;
-    std::string view;
+   /* std::string view;
     int x;
-    int y;
+    int y;*/
 };

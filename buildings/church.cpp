@@ -2,7 +2,7 @@
 #include "../map.h"
 
 Church::Church(int wN, int rN, int x, int y, Map& map)
-	: Building("⛪",  wN, rN, x, y, map)
+	: Building(std::string("⛪"),  wN, rN, x, y, map)
 {
 
 }
