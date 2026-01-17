@@ -7,6 +7,8 @@
 #include "../entities/naturalObjects.h"
 #include "../entities/tree.h"
 #include "../entities/mountain.h"
+#include "../buildings/building.h"
+#include "../buildings/church.h"
 
 class World
 {
@@ -33,6 +35,7 @@ class World
     void setUpdateTime(char operation);
     std::vector<std::shared_ptr<Monkey>> monkeys;
     std::vector<std::shared_ptr<NaturalObjects>> naturalObjects;
+    std::vector<std::shared_ptr<Building>> buildings;
     Map map;
 
     bool pause;

@@ -6,11 +6,13 @@
 class Monkey;
 class NaturalObjects;
 class Entity;
+class Building;
 
 class Map
 {
 public:
-    Map(std::vector<std::shared_ptr<Monkey>>& monkeys, std::vector<std::shared_ptr<NaturalObjects>>& naturalObjectsRef);
+    Map(std::vector<std::shared_ptr<Monkey>> &monkeys, std::vector<std::shared_ptr<NaturalObjects>> &naturalObjectsRef,
+        std::vector<std::shared_ptr<Building>> &buildingsRef);
     ~Map();
 
     void render() const;
@@ -27,5 +29,6 @@ private:
     std::string grass = "~^";
     std::vector<std::shared_ptr<Monkey>>& monkeysRef; // ссылка на вектор monkeys
     std::vector<std::shared_ptr <NaturalObjects>>& naturalObjectsRef;
+    std::vector<std::shared_ptr<Building>> &buildingsRef;
     std::string getObjectView(int x, int y) const;
 };

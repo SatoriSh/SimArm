@@ -4,11 +4,9 @@
 #include "../utils/utils.h"
 
 World::World() 
-    : map(monkeys, naturalObjects)
+    : map(monkeys, naturalObjects, buildings)
 {
     pause = false;
-    //monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", map.getWidth() - 1, 0, map));
-    //monkeys.push_back(std::make_shared<Monkey>(100, 15, "🦍", 0, map.getHeight() - 1, map));
 }
 
 int World::getUpdateTime() const

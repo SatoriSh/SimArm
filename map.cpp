@@ -3,10 +3,11 @@
 #include "entities/entity.h"
 #include "entities/monkey.h"
 #include "entities/naturalObjects.h"
+#include "buildings/building.h"
 
-
-Map::Map(std::vector<std::shared_ptr<Monkey>>& monkeys, std::vector<std::shared_ptr<NaturalObjects>>& naturalObjects)
-    : monkeysRef(monkeys), naturalObjectsRef(naturalObjects)
+Map::Map(std::vector<std::shared_ptr<Monkey>> &monkeys, std::vector<std::shared_ptr<NaturalObjects>> &naturalObjects,
+         std::vector<std::shared_ptr<Building>> &buildings)
+    : monkeysRef(monkeys), naturalObjectsRef(naturalObjects), buildingsRef(buildings)
 {
 
 }
@@ -40,6 +41,11 @@ std::string Map::getObjectView(int x, int y) const
     {
         if (naturalObject->getX() == x && naturalObject->getY() == y) return naturalObject->getView();
     }
+    for (const std::shared_ptr<Building> &building : buildingsRef)
+    {
+        if (building->getX() == x && building->getY() == y)
+            return building->getView();
+    }
 
     return grass;
 }
@@ -53,6 +59,10 @@ std::shared_ptr<Entity> Map::getObjectOnCell(int x, int y) const
     for (const std::shared_ptr<NaturalObjects>& naturalObject : naturalObjectsRef)
     {
         if (naturalObject->getX() == x && naturalObject->getY() == y) return naturalObject;
+    }
+    for (const std::shared_ptr<Building> &building : buildingsRef)
+    {
+        if (building->getX() == x && building->getY() == y) return building;
     }
 
     return nullptr;
