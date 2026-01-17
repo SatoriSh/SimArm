@@ -11,8 +11,8 @@ void ConsoleUI::showPanelUI() const
 {
     drawSeparator();
     std::cout << Utils::YELLOW << std::string(68, ' ') << "ИНФОРМАЦИЯ:" << Utils::BLUE << std::endl;
-    std::cout << std::string(47, ' ') << "Очки: " << world.getPoints() << "    Древесина: " << world.getWoodCount() << "    Камень: " << world.getRockCount()
-              << "    Армяне: " << world.monkeys.size() << "                        \n";
+    std::cout << std::string(44, ' ') << "Очки: " << world.getPoints() << "    Древесина: " << world.getWoodCount() << "    Камень: " << world.getRockCount()
+              << "    Армяне: " << world.monkeys.size() << "    Церкви: " << world.getChurchCount() << "                         \n";
     drawSeparator();
 
     std::cout << Utils::YELLOW << std::string(60, ' ') << "КЛАВИШИ ДЛЯ ВЗАИМОДЕЙСТВИЯ:" << Utils::BLUE << std::endl;

@@ -16,19 +16,6 @@ int Building::getRockNeedForBuild() const
     return rockNeedForBuild;
 }
 
-//int Building::getX() const
-//{
-//    return x;
-//}
-//int Building::getY() const
-//{
-//    return y;
-//}
-//std::string Building::getView() const
-//{
-//    return view;
-//}
-
 Building::~Building()
 {
 }

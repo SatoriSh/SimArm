@@ -63,7 +63,22 @@ void World::updateEntitiesState()
 {
     for (std::shared_ptr<Monkey>& monkey : monkeys)
     {
-        monkey->updateState();
+        if (woodCount >= woodToBuildChurch && rockCount >= rockToBuildChurch)
+        {
+            if (map.getObjectOnCell(monkey.get()->getX(), monkey.get()->getY() - 1) == nullptr)
+            {
+                buildings.push_back(std::make_shared<Church>(woodToBuildChurch, rockToBuildChurch, monkey.get()->getX(), monkey.get()->getY() - 1, map));
+                                
+                onEvent("Армяне построили новую церковь!                                                     ", Utils::BLUE);
+                churchCount++;
+                woodCount -= woodToBuildChurch;
+                rockCount -= rockToBuildChurch;
+            }
+        }
+        else
+        {
+            monkey->updateState();
+        }
     }
 }
 
@@ -164,6 +179,10 @@ int World::getPointsNeedToSpawnNaturalObject() const
 int World::getPointsNeedToSpawnMonkey() const
 {
     return pointsNeedToSpawnMonkey;
+}
+int World::getChurchCount() const
+{
+    return churchCount;
 }
 
 World::~World()

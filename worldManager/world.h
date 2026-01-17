@@ -32,6 +32,7 @@ class World
     int getPoints() const;
     int getPointsNeedToSpawnNaturalObject() const;
     int getPointsNeedToSpawnMonkey() const;
+    int getChurchCount() const;
     void setUpdateTime(char operation);
     std::vector<std::shared_ptr<Monkey>> monkeys;
     std::vector<std::shared_ptr<NaturalObjects>> naturalObjects;
@@ -51,6 +52,9 @@ class World
     int points = 0;
     int pointsNeedToSpawnNaturalObject = 10;
     int pointsNeedToSpawnMonkey = 30;
+    int woodToBuildChurch = 33;
+    int rockToBuildChurch = 20;
+    int churchCount;
     void updateEntitiesState();
     void refreshEntities();
     std::function<void(const std::string &, const std::string &)> onEvent; // сигнал

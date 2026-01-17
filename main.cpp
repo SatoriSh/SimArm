@@ -17,8 +17,8 @@
 #include "worldManager/world.h"
 #include "UI/consoleUI.h"
 
-const int bootSplashTime = 500;
-const int logoAnimationUpdateTime = 25;
+const int bootSplashTime = 1500;
+const int logoAnimationUpdateTime = 50;
 
 // constexpr - чуть надежнее, переменная вычислится на этапе компиляции
 constexpr char SPACE = 32;
@@ -41,6 +41,12 @@ int main()
     SetConsoleMode(hConsole, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
     std::cout << "\033[8;65;238t" << std::flush; // команда которая растягивает терминал на 1920x1080
     #endif
+
+    std::cout << "Перед началом, растяните консоль на весь экран, а еще лучше нажимите F11, чтобы UI отображались корректно.\n\n";
+    
+    std::cout << "Нажмите Enter как будете готовы...";
+    std::cin.get();
+
 
     ConsoleUI consoleUI(world);
 
@@ -95,7 +101,7 @@ void inputHandler()
     }
 }
 
-void showBootSplash() // убрать в systemUI
+void showBootSplash() // убрать в systemUI // да похуй уже
 {
     std::cout << Utils::GREEN;
 

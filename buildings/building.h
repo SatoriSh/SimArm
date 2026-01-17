@@ -10,14 +10,8 @@ class Building : public Entity
 
     int getWoodNeedForBuild() const;
     int getRockNeedForBuild() const;
-    /*int getX() const;
-    int getY() const;
-    std::string getView() const;*/
 
   private:
     int woodNeedForBuild;
     int rockNeedForBuild;
-   /* std::string view;
-    int x;
-    int y;*/
 };
